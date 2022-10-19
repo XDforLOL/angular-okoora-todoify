@@ -1,0 +1,33 @@
+
+<div class="authBlock modal-content rounded-4 shadow">
+
+  <div class="fw-bold mb-0 fs-2">Sign up to Todoify for free</div>
+  <div class="formGroup">
+    <input
+      type="text"
+      class="formControl form-control rounded-3"
+      placeholder="Email"
+      #userEmail
+      required
+    />
+  </div>
+  <div class="formGroup">
+    <input
+      type="password"
+      class="formControl form-control rounded-3"
+      placeholder="Password"
+      #userPassword
+      required
+    />
+  </div>
+  <div class="formGroup">
+    <input
+      type="button"
+      class="btn btnPrimary w-100 mb-2 btn btn-lg rounded-3 btn-primary"
+      value="Sign Up"
+      (click)="
+          authenticationService.SignUp(userEmail.value, userPassword.value)
+        "
+    />
+  </div>
+</div>

@@ -1,0 +1,78 @@
+<section class="todoapp">
+  <div>
+    <footer class="footer">
+      <span class="todo-count">
+          {{items.length}}
+          <span *ngIf="items.length === 1; else elseBlock">item</span>
+          <ng-template #elseBlock>items</ng-template>
+      </span>
+      <ul class="filters">
+        <li [@fade]="state" (click)="changeState()">
+          <button
+
+          class=""
+          [class.active]="filter == 'all'"
+          (click)="filter = 'all'; ">
+          All
+          </button>
+        </li>
+        <span> </span>
+        <li [@fade]="state" (click)="changeState()">    <button
+
+          class=""
+          [class.active]="filter == '5'"
+          (click)="filter = '5'">
+          5
+        </button></li>
+        <span> </span>
+        <li [@fade]="state" (click)="changeState()">    <button
+          [class.pressed]
+          class=""
+          [class.active]="filter == '10'"
+          (click)="filter = '10'">
+          10
+        </button></li>
+        <span> </span>
+        <li [@fade]="state" (click)="changeState()">    <button
+
+          class="btn btn-menu"
+          [class.active]="filter == '20'"
+          (click)="filter = '20'">
+          20
+        </button></li>
+        <span> </span>
+        <li [@fade]="state" (click)="changeState()">
+          <button
+          class="btn btn-menu"
+          [class.active]="filter == 'done'"
+          (click)="filter = 'done'">
+          Done
+          </button>
+        </li>
+      </ul>
+      <span>
+        <button class="signout" (click)="authService.SignOut()">Sign Out</button>
+      </span>
+    </footer>
+    <header class="header">
+      <h1>ToDoify</h1>
+      <input     #newItem
+                 placeholder="What needs to be done today?"
+                 (keyup.enter)="addItem(newItem.value); newItem.value = ''"
+                 class="new-todo"
+                 id="addItemInput" >
+    </header>
+    <section class="main">
+
+      <label for="addItemInput" class="add_item"></label>
+
+      <input id="add_item" class="add_item" (click)="addItem(newItem.value)">
+      <label for="add_item"></label>
+      <ul class="todo-list">
+        <li *ngFor="let i of items">
+          <app-item (remove)="remove(i)" [item]="i"></app-item>
+        </li>
+      </ul>
+    </section>
+  </div>
+</section>
